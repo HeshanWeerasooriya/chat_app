@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 class Messages extends StatelessWidget {
   Messages({Key? key}) : super(key: key);
 
-  final Stream<QuerySnapshot> _usersStream =
-      FirebaseFirestore.instance.collection('chats').snapshots();
+  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
+      .collection('chats')
+      .orderBy(
+        'createAt',
+        descending: true,
+      )
+      .snapshots();
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +26,7 @@ class Messages extends StatelessWidget {
         }
 
         return ListView(
+          reverse: true,
           children: snapshot.data!.docs.map((DocumentSnapshot document) {
             Map<String, dynamic> data =
                 document.data()! as Map<String, dynamic>;

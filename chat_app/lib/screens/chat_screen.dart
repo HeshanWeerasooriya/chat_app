@@ -1,4 +1,5 @@
 import 'package:chat_app/widgets/chat/messages.dart';
+import 'package:chat_app/widgets/chat/new_message.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -47,19 +48,14 @@ class _ChatScreenState extends State<ChatScreen> {
           child: Container(
             child: Column(
               children: [
-                Expanded(child: Messages()),
+                Expanded(
+                  child: Messages(),
+                ),
+                NewMessage(),
               ],
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          FirebaseFirestore.instance
-              .collection('chats')
-              .add({"text": 'This from button!'});
-        },
       ),
     );
   }
