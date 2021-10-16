@@ -33,7 +33,7 @@ class Messages extends StatelessWidget {
                 document.data()! as Map<String, dynamic>;
             return MessageBubble(
               data['text'],
-              data['userId'],
+              data['username'],
             );
           }).toList(),
         );
