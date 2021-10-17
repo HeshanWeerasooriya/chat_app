@@ -34,6 +34,7 @@ class Messages extends StatelessWidget {
             return MessageBubble(
               data['text'],
               data['username'],
+              data['userImage'],
             );
           }).toList(),
         );
